@@ -248,6 +248,7 @@ h1 {
     font-size: 17px;
     cursor: pointer;
     border: 1px solid;
+    border-left-width: 0;
 }
 
 .header .search-container button:hover {
