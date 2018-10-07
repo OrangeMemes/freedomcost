@@ -1,0 +1,24 @@
+@import items.Item
+
+@(item: Item, gameName: String)
+
+<div class="example-1 card">
+    <div class="wrapper" style="background: url(@item.picture) top/contain no-repeat;">
+        <div class="date">
+            <span class="month">лимит</span>
+            <span class="day">@if(item.amountLimit == "-1"){∞}else{@item.amountLimit}</span>
+        </div>
+        <div class="data">
+            <div class="content">
+
+                <h1 class="title"><a href="@routes.HomeController.byId(item.id, gameName)">@item.title</a></h1>
+                @if(item.giftLevel.isDefined) {
+                    <span class="author">Дарится с @item.giftLevel.get уровня</span>
+                }
+                @if(item.description.isDefined) {
+                    <p class="text">@item.description.get</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

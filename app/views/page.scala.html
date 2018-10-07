@@ -1,0 +1,31 @@
+@import org.joda.time.DateTime
+@(content: Html, modified: DateTime, updated: DateTime, gameName: String)
+
+<html lang="ru">
+    <head>
+        <title>Предметы Цены Свободы</title>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+    </head>
+    <body>
+        <div class="header">
+            <div class="search-container">
+            <form action="/@gameName/name">
+                <input type="text" name="searchQuery" placeholder="Поиск по имени...">
+                <button type="submit">Поиск</button>
+            </form>
+            </div>
+            <div class="times">
+
+                <a href="@routes.HomeController.update(gameName)" id="refreshButton">Обновить сейчас</a>
+            <div class="datetime">
+                Файл обновлён @(updated.toString("dd.MM.yyyy 'в' HH:mm:ss"))
+            </div>
+            <div class="datetime">
+                Файл был отредактирован @(modified.toString("dd.MM.yyyy 'в' HH:mm:ss"))
+            </div>
+
+            </div>
+        </div>
+        @content
+    </body>
+</html>

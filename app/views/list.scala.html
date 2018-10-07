@@ -1,0 +1,9 @@
+@(content: Seq[Html])
+
+@if(content.length > 100) {
+    @text(s"Показаны первые 100 результатов.")
+}
+
+@for(i <- content.take(100)) {
+    <div class="listItem">@i</div>
+}
