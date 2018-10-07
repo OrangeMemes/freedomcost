@@ -129,7 +129,7 @@ h1 {
 }
 .example-1 .content {
     background-color: #fff;
-    box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 38px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
 }
 .example-1 .title a {
     color: gray;
@@ -204,7 +204,7 @@ h1 {
     background-color: #ffffff;
     padding: 20px;
     margin: 12px 12px 20px 12px;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.5), 0 15px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 38px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the header links */
@@ -236,8 +236,7 @@ h1 {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
-    border: none;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2), -2px 1px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid;
 }
 
 .header .search-container button {
@@ -247,9 +246,8 @@ h1 {
     margin-right: 8px;
     background: #ddd;
     font-size: 17px;
-    border: none;
     cursor: pointer;
-
+    border: 1px solid;
 }
 
 .header .search-container button:hover {
@@ -257,9 +255,9 @@ h1 {
 }
 
 #refreshButton {
+    border: 1px solid;
     float: left;
     margin-right: 10px;
-    box-shadow: 0 2px 19px rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.2);
 }
 
 .systemMessage {
@@ -270,7 +268,7 @@ h1 {
     font-weight: 400;
     font-size: 1.5em;
     margin: 12px;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 38px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
 .datetime {
