@@ -4,6 +4,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
+GET        /:gameName              controllers.HomeController.empty(gameName)
 GET        /:gameName/              controllers.HomeController.empty(gameName)
 # An example controller showing how to use dependency injection
 GET        /:gameName/id/:id        controllers.HomeController.byId(id, gameName)
