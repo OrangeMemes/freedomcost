@@ -1,0 +1,7 @@
+@(password: String = "")
+
+<form method="post" action="uploadLog">
+    <textarea type="text" name="logdata" placeholder="Вставьте сюда содержимое файла логов"></textarea>
+    <input type="password" name="password" placeholder="Пароль" value="@password">
+    <input type="submit" value="Отправить">
+</form>

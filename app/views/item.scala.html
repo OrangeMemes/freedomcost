@@ -19,7 +19,11 @@
                     @if(item.giftLevel.isDefined) {
                         <p class="giftFrom"><b>Дарится</b> с @item.giftLevel.get уровня</p>
                     }
-                    <p class="canFindAt"><b>Можно найти</b> <i>Будет доступно в ближайших обновлениях</i></p>
+                    @if(item.rooms().nonEmpty) {
+                        <p class="canFindAt"><b>Можно найти</b> @(item.rooms())</p>
+                    }else {
+                        <p class="canFindAt">Не находится в комнатах</p>
+                    }
                 </div>
             </div>
         </div>

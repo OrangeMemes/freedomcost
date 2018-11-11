@@ -1,5 +1,5 @@
 @import org.joda.time.DateTime
-@(content: Html, modified: DateTime, updated: DateTime, gameName: String, searchString: String = "")
+@(content: Html, modified: DateTime, updated: DateTime, gameName: String, searchString: String = "", logUpdated: Option[DateTime] = None)
 
 <html lang="ru">
     <head>
@@ -8,22 +8,27 @@
     </head>
     <body>
         <div class="header">
-            <div class="search-container">
-            <form action="/@gameName/name">
-                <input type="text" name="searchQuery" placeholder="Поиск по имени..." value="@searchString">
-                <button type="submit">Поиск</button>
-            </form>
-            </div>
+
+            <a href="@routes.HomeController.update(gameName)" id="refreshButton" class="button">Обновить сейчас</a>
+
             <div class="times">
 
-                <a href="@routes.HomeController.update(gameName)" id="refreshButton" class="button">Обновить сейчас</a>
-            <div class="datetime">
+                <div class="datetime">
                 Файл обновлён @(updated.toString("dd.MM.yyyy 'в' HH:mm:ss"))
-            </div>
-            <div class="datetime">
+                </div>
+                <div class="datetime">
                 Файл был отредактирован @(modified.toString("dd.MM.yyyy 'в' HH:mm:ss"))
-            </div>
+                </div>
+                <div class="datetime">
+                Самые свежие логи @(logUpdated.map(_.toString("'- от' dd.MM.yyyy HH:mm:ss")).getOrElse("не были загружены никогда"))
+                </div>
 
+            </div>
+            <div class="search-container">
+                <form action="/@gameName/name">
+                    <input type="text" name="searchQuery" placeholder="Поиск по имени..." value="@searchString">
+                    <button type="submit">Поиск</button>
+                </form>
             </div>
         </div>
         @content
