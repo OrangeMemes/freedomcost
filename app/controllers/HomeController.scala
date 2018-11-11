@@ -32,12 +32,12 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
   def byName(name: String, gameName: String) = Action {
     val items = itemProvider(gameName).items.filter(_.title.toLowerCase.contains(name.toLowerCase))
-    showItemSeq(items, gameName)
+    showItemSeq(items, gameName, name)
   }
 
-  private def showItemSeq(items: Seq[Item], gameName: String) = {
+  private def showItemSeq(items: Seq[Item], gameName: String, searchString: String = "") = {
     if (items.nonEmpty)
-      Ok(views.html.page(views.html.list(items.map(views.html.item(_, gameName))), itemProvider(gameName).modifiedTime, itemProvider(gameName).updatedTime, gameName))
+      Ok(views.html.page(views.html.list(items.map(views.html.listitem(_, gameName))), itemProvider(gameName).modifiedTime, itemProvider(gameName).updatedTime, gameName, searchString))
     else {
       showMessage(s"Предмет с таким именем не найден или не поддерживается.", gameName)
     }

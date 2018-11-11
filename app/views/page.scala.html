@@ -1,5 +1,5 @@
 @import org.joda.time.DateTime
-@(content: Html, modified: DateTime, updated: DateTime, gameName: String)
+@(content: Html, modified: DateTime, updated: DateTime, gameName: String, searchString: String = "")
 
 <html lang="ru">
     <head>
@@ -10,13 +10,13 @@
         <div class="header">
             <div class="search-container">
             <form action="/@gameName/name">
-                <input type="text" name="searchQuery" placeholder="Поиск по имени...">
+                <input type="text" name="searchQuery" placeholder="Поиск по имени..." value="@searchString">
                 <button type="submit">Поиск</button>
             </form>
             </div>
             <div class="times">
 
-                <a href="@routes.HomeController.update(gameName)" id="refreshButton">Обновить сейчас</a>
+                <a href="@routes.HomeController.update(gameName)" id="refreshButton" class="button">Обновить сейчас</a>
             <div class="datetime">
                 Файл обновлён @(updated.toString("dd.MM.yyyy 'в' HH:mm:ss"))
             </div>

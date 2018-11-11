@@ -1,0 +1,31 @@
+@import items.Item
+@(item: Item, gameName: String)
+
+<div class="mainInfo">
+    <img src="@item.picture"/>
+    <div class="vertical growable">
+        <h1>@item.title</h1>
+        @if(item.description.isDefined) {
+            <p id="description" class="extendedInfo">
+            @if(item.description.get.length > 62) {
+                @item.description.get.take(60).concat("...")
+            } else {
+                @item.description.get
+            }
+            </p>
+        }
+    </div>
+    <div class="vertical limitblock extendedInfo">
+        <p>лимит</p>
+        <h1>@if(item.amountLimit == "-1") {∞} else {
+            @item.amountLimit
+        }</h1>
+    </div>
+    <a href="@routes.HomeController.byId(item.id, gameName)" class="button">Ссылка</a>
+</div>
+
+
+
+@views.html.item(item)
+
+
