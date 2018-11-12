@@ -4,15 +4,16 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /:gameName                  controllers.HomeController.empty(gameName)
-GET         /:gameName/                 controllers.HomeController.empty(gameName)
+GET        /                           controllers.IndexController.index()
+GET        /:gameName                  controllers.HomeController.empty(gameName)
+GET        /:gameName/                 controllers.HomeController.empty(gameName)
 # An example controller showing how to use dependency injection
-GET         /:gameName/id/:id           controllers.HomeController.byId(id, gameName)
+GET        /:gameName/id/:id           controllers.HomeController.byId(id, gameName)
 
-GET         /:gameName/name             controllers.HomeController.byName(searchQuery, gameName)
+GET        /:gameName/name             controllers.HomeController.byName(searchQuery, gameName)
 
-GET         /:gameName/update           controllers.HomeController.update(gameName)
-GET         /:gameName/uploadLog        controllers.HomeController.uploadLogPage(gameName, password ?= "")
+GET        /:gameName/update           controllers.HomeController.update(gameName)
+GET        /:gameName/uploadLog        controllers.HomeController.uploadLogPage(gameName, password ?= "")
 
 POST        /:gameName/uploadLog        controllers.HomeController.uploadLog(gameName)
 
