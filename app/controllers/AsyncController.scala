@@ -2,7 +2,6 @@ package controllers
 
 import akka.actor.ActorSystem
 import javax.inject._
-import play.api.libs.json.{JsError, JsSuccess}
 import play.api.mvc._
 
 import scala.concurrent.duration._
@@ -46,18 +45,5 @@ class AsyncController @Inject()(cc: ControllerComponents, actorSystem: ActorSyst
     promise.future
   }
 
-  def uploadMedia = Action { implicit request =>
-    request.body.asJson.map { json =>
-      ((json \ "id").validate[Int], (json \ "photoUrl").validate[String], (json \ "messageText").validate[String]) match {
-        case (_: JsSuccess[Int], _: JsSuccess[String], _: JsSuccess[String]) => BadRequest("You can't pass both photoUrl and messageText")
-        case (_: JsError, _, _) => BadRequest("You need to provide user's id")
-        case (_: JsSuccess[Int], _: JsError, _: JsSuccess[String]) => Ok("""{"success": true}""")
-        case (_: JsSuccess[Int], _: JsSuccess[String], _: JsError) => Ok("""{"success": true}""")
-        case _ => BadRequest("ну и что это такое..........")
-      }
-    }.getOrElse {
-      BadRequest("Expecting Json data")
-    }
-  }
 
 }
